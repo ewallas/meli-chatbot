@@ -3,8 +3,8 @@
 		<output>
 			<item>Hola soy tu asistente para buscar productos en Mercado Libre, para continuar solo ingresa tu busqueda y un precio que estas dispuesto a pagar para buscar coincidencias, el precio es opcional. Ej: Me gustaria comprar una notebook por 7000</item>
 		</output>
-		<input pattern="* (quiero|gustaria|deseo|necesito)* $Q [(por|a|entre los|)] $Precio::Number">
-			<output value="$Q a $Precio">
-		</input>
+	</input>	
+	<input pattern="* (quiero|gustaria|deseo|necesito)* $Q [(por|a|entre los|)] $Precio::Number">
+		<output value="$Q a $Precio">
 	</input>
 </context>
