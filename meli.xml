@@ -5,6 +5,6 @@
 		</output>
 	</input>	
 	<input pattern="* (quiero|gustaria|deseo|necesito)* $Q [(por|a|entre los|)] $Precio::Number">
-		<output value="$Q a $Precio">
+		<output value="$Q a $Precio"/>
 	</input>
 </context>
