@@ -1,0 +1,8 @@
+<context>
+	<input pattern="* (hola) *">
+		<output>
+			<item>Hola, solo debes ingresar tu busqueda y el precio y te buscare algo que coincida</item>
+		</output>
+	</input>
+	
+</context>
