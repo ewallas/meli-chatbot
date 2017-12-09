@@ -4,7 +4,7 @@
 			<item>Hola soy tu asistente para buscar productos en Mercado Libre, para continuar solo ingresa tu busqueda y un precio que estas dispuesto a pagar para buscar coincidencias, el precio es opcional. Ej: Me gustaria comprar una notebook por 7000</item>
 		</output>
 		<context id="buscador">
-			<input pattern="* (quiero|gustaria|deseo|necesito|una)* [$Busqueda::Text] [(por|a|entre los|)*] [$Precio::Number]">
+			<input pattern="* (quiero|gustaria|deseo|necesito)* [comprar] [una] [$Busqueda::Text] [(por|a|entre los|)*] [$Precio::Number]">
 				<output value="$Busqueda a $Precio" if="full($Busqueda) and full($Precio)"/>
 				<output value="$Busqueda" if="full($Busqueda) and empty($Precio)"/>
 				<output value="$Precio" if="full($Precio) and empty($Busqueda)"/>
