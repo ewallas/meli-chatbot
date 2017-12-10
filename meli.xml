@@ -4,7 +4,7 @@
 	
 	<!--Si dice hola y no esta configurado el perfil-->
 	<input pattern="* hola *" >
-		<context id="Configurar" if='$Configurado == "No"'>
+		<context id="Configurar" if='eq($Configurado,"No")'>
 			<output value="Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!"/>
 			
 			<!--Almacena si prefiere buscar en tiendas oficiales-->
@@ -114,7 +114,7 @@
 	</input>	
 
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
-	<input pattern="* hola *">	
+	<input pattern="*">	
 		<context id="VolverConfigurar" if='full($Configurado) and eq($Configurado,"Si")'>
 			<output>
 				<item>Recuerda que para realizar una busqueda solo debes ingresar el item con su nombre.</item>
