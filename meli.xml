@@ -129,4 +129,66 @@
 			<var name="Configurado" value="No" scope="user" if="eq($SiNo,Si)"/>
 		</context>
 	</input>
+
+	<!--Busqueda de productos especificos-->
+	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] * [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata|saber de|saber cuanto sale)*] * [(una|un|a|de|en|la|lo)*] {$Busqueda::Text [* $Precio::Number]}">
+		<context id="buscador">
+			<!-- Si no se realizo una busqueda valida redirije a volver a configurar-->
+			<context  id="VolverConfigurar" if="empty($Busqueda)"/>
+			
+			<!--Calcula un rango de precios para el que buscar productos-->
+			<var name="PrecioMinimo" value="$Precio * 0.85" scope="context" if="full($Precio)"/>
+			<var name="PrecioMaximo" value="$Precio * 1.15" scope="context" if="full($Precio)"/>
+			<!-- Realiza una llamada a la api en busca de productos coincidentes -->
+			<get url="https://api.mercadolibre.com/sites/MLA/search" var="Resultados">
+				<param name="official_store" value="$CodigoTiendaOficial"/>
+				<param name="state" value="$CodigoProvincia"/>
+				<param name="condition" value="$CodigoCondicion"/>
+				<param name="shipping" value="$CodigoEnvioGratis"/>
+				<param name="has_pictures" value="yes"/>
+				<param name="accepts_mercadopago" value="yes"/>
+				<param name="limit" value="3"/>
+				<param name="price" value="$PrecioMinimo-$PrecioMaximo" if="full($Precio)"/>
+				<param name="sort" value="price_asc"/>
+				<param name="q" value="$Busqueda"/>
+			</get>
+			<!--Obtiene la cantidad de resultados -->
+			<var name="CantidadResultados" scope="context" value="get('primary_results',get('paging',$Resultados)"/>
+			<!--Informa si no hay resultados -->
+			<context id="SinResultados" if="$CantidadResultados==0"/>
+			<!--Muestra un resultado -->
+			<var name="Producto" scope="context" value="get(0,get('results',$Resultados))"/>
+			<var name="TituloProducto" scope="context" value="get('title',$Prodcuto)"/>
+			<var name="PrecioProducto" scope="context" value="get('price',$Prodcuto)"/>
+			<var name="MonedaProducto" scope="context" value="get('currency_id',$Prodcuto)"/>
+			<var name="LinkProducto" scope="context" value="get('permalink',$Prodcuto)"/>
+			<var name="ImagenProducto" scope="context" value="get('thumbnail',$Prodcuto)"/>
+			
+			<output>
+				<item>Te encontre este prodcuto de $CantidadResultados productos.</item>
+				<item>$TituloProducto</item>
+				<item>$PrecioProducto $MonedaProducto</item>
+				<item>
+					<![CDATA[
+						<a href="$LinkProducto"><img src="$ImagenProducto" alt="Ver más"/></a>
+					]]>		
+				</item>
+			</output>
+		</context>
+	</input>
+
+	<context id="SinResultados">
+		<output>
+			<item>No pude encontrar ningun producto que coincida</item>
+		</output>
+	</context>
+
+	<!--Mensaje de error cuando no se reconoce la busqueda-->
+	<context id="BusquedaNoValida">
+		<output>
+			<item>No entiendo lo que me quieres decir.</item>
+			<item>Puedes probar asi, me gustaria comprar un Samsung S8 a 9000</item>
+		</output>
+	</context>
+
 </context>
