@@ -11,11 +11,11 @@
 			</output>
 			<!--Almacena si prefiere buscar en tiendas oficiales-->
 			<input pattern="* $SiNo *">
-				<context id="Configuracion1-4">
-					<sample>
+				<sample>
 						<item>Si</item>
 						<item>No</item>
-					</sample>
+				</sample>	
+				<context id="Configuracion1-4">
 					<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,'Si')"/>
 					<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,'No')"/>				
 				
