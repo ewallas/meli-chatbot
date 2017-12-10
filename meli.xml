@@ -109,7 +109,7 @@
 				<item>Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!</item>
 				<item>Ej: Me gustaria comprar un Samsung S8 a 9000 pesos</item>
 			</output>
-			<var name="Configurado" value="Si" scope="user"/>
+			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
 		</context>
 	</input>	
 
