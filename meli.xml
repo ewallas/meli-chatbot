@@ -161,26 +161,23 @@
 			<output if="$CantidadResultados==0">
 				<item>No pude encontrar ningun producto que coincida</item>
 			</output>
-			<context id="MostrarProducto" if="$CantidadResultados>0" modal="true">
-				<!--Muestra un resultado -->
-				<var name="Producto" scope="context" value="get(0,get('results',$Resultados))"/>
-				<var name="TituloProducto" scope="context" value="get('title',$Prodcuto)"/>
-				<var name="PrecioProducto" scope="context" value="get('price',$Prodcuto)"/>
-				<var name="MonedaProducto" scope="context" value="get('currency_id',$Prodcuto)"/>
-				<var name="LinkProducto" scope="context" value="get('permalink',$Prodcuto)"/>
-				<var name="ImagenProducto" scope="context" value="get('thumbnail',$Prodcuto)"/>
-				
-				<output>
-					<item>Te encontre este prodcuto de $CantidadResultados productos.</item>
-					<item>$TituloProducto</item>
-					<item>$PrecioProducto $MonedaProducto</item>
-					<item>
-						<![CDATA[
-							<a href="$LinkProducto"><img src="$ImagenProducto" alt="Ver más"/></a>
-						]]>		
-					</item>
-				</output>
-			</context>
+			<!--Muestra un resultado -->
+			<var name="Producto" scope="context" value="get(0,get('results',$Resultados))" if="$CantidadResultados>0"/>
+			<var name="TituloProducto" scope="context" value="get('title',$Prodcuto)" if="$CantidadResultados>0"/>
+			<var name="PrecioProducto" scope="context" value="get('price',$Prodcuto)" if="$CantidadResultados>0"/>
+			<var name="MonedaProducto" scope="context" value="get('currency_id',$Prodcuto)" if="$CantidadResultados>0"/>
+			<var name="LinkProducto" scope="context" value="get('permalink',$Prodcuto)" if="$CantidadResultados>0"/>
+			<var name="ImagenProducto" scope="context" value="get('thumbnail',$Prodcuto)" if="$CantidadResultados>0"/>	
+			<output if="$CantidadResultados>0">
+				<item>Te encontre este prodcuto de $CantidadResultados productos.</item>
+				<item>$TituloProducto</item>
+				<item>$PrecioProducto $MonedaProducto</item>
+				<item>
+					<![CDATA[
+						<a href="$LinkProducto"><img src="$ImagenProducto" alt="Ver más"/></a>
+					]]>		
+				</item>
+			</output>
 		</context>
 	</input>
 </context>
