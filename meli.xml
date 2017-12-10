@@ -3,7 +3,7 @@
 	<pattern name="SiNo" value="(Si|No)"/>
 	
 	<!--Si dice hola y no esta configurado el perfil-->
-	<input pattern="* (hola) *"  if="empty($Configurado)">
+	<input pattern="* (hola) *" >
 		<context id="Configurar">
 			<output value="Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!"/>
 			
