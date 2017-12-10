@@ -15,6 +15,9 @@
 			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,Si)"/>
 			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,No)"/>				
 			<output value="¿Cual es tu provincia?"/>
+			<pattern name="Provincia">
+				<pattern value="(Capital Federal|Bs.As. G.B.A. Sur|Córdoba)"/>
+			</pattern>
 			<input pattern="* $Provincia" />
 			<sample>
 				<item>Capital Federal</item>
