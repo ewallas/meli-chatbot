@@ -6,10 +6,13 @@
 				<item>Ej: Me gustaria comprar un Samsung S8 a 9000 pesos</item>				
 				<item>Ya estoy configurado con tus preferencias ¿Deseas hacerlo nuevamente?</item>
 			</output>
-			<input pattern="* $SiNo">
-				<var name="Configurado" value="No" scope="user" if="eq($SiNo,Si)"/>
-				<context id="Configurar" if="eq($SiNo,Si)"/>
-			</input>
+			<input pattern="* $SiNo"/>
+			<sample>
+				<item>Si</item>
+				<item>No</item>
+			</sample>
+			<var name="Configurado" value="No" scope="user" if="eq($SiNo,Si)"/>
+			<context id="Configurar" if="eq($SiNo,Si)"/>
 		</context>
 	</input>
 </context>
