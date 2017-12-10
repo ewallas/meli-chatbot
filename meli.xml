@@ -5,12 +5,13 @@
 	<!--Si dice hola y no esta configurado el perfil-->
 	<input pattern="* hola *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="Configurar">
-			<output value="Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!"/>
-			
+			<output>
+				<item value="Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!"/>
+				<item value="¿Prefires siempre las tiendas oficiales?"/>	
+			</output>
 			<!--Almacena si prefiere buscar en tiendas oficiales-->
 			<input pattern="* $SiNo *">
 				<context id="Configuracion1-4">
-					<output value="¿Prefires siempre las tiendas oficiales?"/>
 					<sample>
 						<item>Si</item>
 						<item>No</item>
