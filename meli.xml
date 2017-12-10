@@ -1,7 +1,8 @@
 <context>
 	<!--Patrones comunes-->
 	<pattern name="SiNo" value="(Si|No)"/>
-	
+	<pattern name="Provincia" value="(Cordoba|Jujuy)"/>
+					
 	<!--Si dice hola y no esta configurado el perfil-->
 	<input pattern="* hola *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="Configurar">
@@ -14,7 +15,6 @@
 					<!--Almacena la provincia del usuario-->
 					<output value="¿Cual es tu provincia?" />
 					<!--Patron de provincias disponibles-->
-					<pattern name="Provincia" value="(Cordoba|Jujuy)"/>
 					<input pattern="* $Provincia *">
 						<context id="Configuracion2-4">
 							<!--Guarda el codigo de la provincia-->
