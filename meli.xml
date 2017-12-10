@@ -6,7 +6,6 @@
 	<input pattern="* hola *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="Configurar">
 			<output value="Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!"/>
-			<!--Almacena si prefiere buscar en tiendas oficiales-->
 			<output value="¿Prefires siempre las tiendas oficiales?"/>	
 			<input pattern="* $SiNo">
 				<sample>
