@@ -12,7 +12,6 @@
 				<item>No</item>
 			</sample>
 			<var name="Configurado" value="No" scope="user" if="eq($SiNo,Si)"/>
-			<context id="Configurar" if="eq($SiNo,Si)"/>
 		</context>
 	</input>
 </context>
