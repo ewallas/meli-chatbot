@@ -114,8 +114,8 @@
 	</input>	
 
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
-	<input pattern="* hola *" if='full($Configurado) or eq($Configurado,"Si")'>	
-		<context id="VolverConfigurar">
+	<input pattern="* hola *">	
+		<context id="VolverConfigurar" if='full($Configurado) and eq($Configurado,"Si")'>
 			<output>
 				<item>Recuerda que para realizar una busqueda solo debes ingresar el item con su nombre.</item>
 				<item>Ej: Me gustaria comprar un Samsung S8 a 9000 pesos</item>				
