@@ -53,11 +53,11 @@
 							
 							<!--Alamcena si prefiere productos nuevos o usados-->
 							<output value="¿Prefieres productos nuevos o usados?"/>
-							<pattern value="(Nuevos|Usados)" name="Condicion"/>
+							<pattern name="Condicion" value="(nuev*:1|usad*:2)" />
 							<input pattern="* $Condicion *">
 								<context id="Configuracion3-4">
-									<var name="$CodigoCondicion" value="new" scope="user" if="eq($Condicion,'Nuevos')"/>
-									<var name="$CodigoCondicion" value="used" scope="user" if="eq($Condicion,'Usados')"/>
+									<var name="$CodigoCondicion" value="new" scope="user" if="eq($Condicion,1)"/>
+									<var name="$CodigoCondicion" value="used" scope="user" if="eq($Condicion,2)"/>
 									
 									<!--Alamcena si prefiere envios gratis o solo mercado envios-->
 									<output value="¿Envio gratis?"/>
