@@ -109,25 +109,4 @@
 		</context>
 	</input>
 
-	<input pattern="* (quiero|gustaria|deseo|necesito)* [(comprar|tener|adquirir|obtener|ver|saber de|saber cuanto sale)*] [(una|un)] $Busqueda::Text [(por|a|entre los|)*] [$Precio::Number]">
-		<context id="buscador">
-			<output value="Debe ingresar una busqueda valida. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos" if="empty($Busqueda) and empty($Precio)"/>
-			<context  id="raiz"/>
-			<var name="PrecioMinimo" value="$Precio * 0.85" scope="context"/>
-			<var name="PrecioMaximo" value="$Precio * 1.15" scope="context"/>
-			<get url="https://api.mercadolibre.com/sites/MLA/search" var="ResultadosCompletos">
-				<param name="official_store" value="$CodigoTiendaOficial"/>
-				<param name="state" value="$CodigoProvincia"/>
-				<param name="condition" value="$CodigoCondicion"/>
-				<param name="shipping" value="$CodigoEnvioGratis"/>
-				<param name="has_pictures" value="yes"/>
-				<param name="accepts_mercadopago" value="yes"/>
-				<param name="limit" value="3"/>
-				<param name="price" value="$PrecioMinimo-$PrecioMaximo"/>
-				<param name="sort" value="price_asc"/>
-				<param name="q" value="$Busqueda"/>
-			</get>
-			<output value="$ResultadosCompletos"/>
-		</context>
-	</input>
 </context>
