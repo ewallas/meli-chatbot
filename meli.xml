@@ -1,12 +1,14 @@
 <context>
+	<!--Patrones comunes-->
 	<pattern name="SiNo" value="(Si|No)"/>
-			
+	
+	<!--Si dice hola y no esta configurado el perfil-->
 	<input pattern="* (hola) *" if="!full($Configurado) or eq($Configurado,No)">
 		<context id="Configurar">
-			<output>
-				<item>Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!</item>
-				<item>¿Prefires siempre las tiendas oficiales?</item>
-			</output>
+			<output value="Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!"/>
+			
+			<!--Almacena si prefiere buscar en tiendas oficiales-->
+			<output value="¿Prefires siempre las tiendas oficiales?"/>
 			<input pattern="* $SiNo *" />
 			<sample>
 				<item>Si</item>
@@ -14,9 +16,19 @@
 			</sample>
 			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,Si)"/>
 			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,No)"/>				
+		
+			<!--Almacena la provincia del usuario-->
 			<output value="¿Cual es tu provincia?"/>
+			<!--Patron de provincias disponibles-->
 			<pattern name="Provincia">
 				<pattern value="(Capital Federal|Bs.As. G.B.A. Sur|Córdoba)"/>
+				<pattern value="(Bs.As. G.B.A. Oeste|Bs.As. G.B.A. Norte|Santa Fe)"/>
+				<pattern value="(Bs.As. Costa Atlántica|Buenos Aires Interior|Tucumán)"/>
+				<pattern value="(Misiones|Mendoza|Neuquén)"/>
+				<pattern value="(La Pampa|Jujuy|Chaco)"/>
+				<pattern value="(Formosa|La Rioja|Río Negro)"/>
+				<pattern value="(Salta|San Juan|Santiago del Estero)"/>
+				<pattern value="(San Luis|Santa Cruz)"/>
 			</pattern>
 			<input pattern="* $Provincia" />
 			<sample>
@@ -44,6 +56,7 @@
 				<item>San Luis</item>
 				<item>Santa Cruz</item>
 			</sample>
+			<!--Guarda el codigo de la provincia-->
 			<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if="eq($Provincia,Capital Federal)"/>
 			<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if="eq($Provincia,Bs.As. G.B.A. Sur)"/>
 			<var name="CodigoProvincia" value="TUxBUENPUmFkZGIw" scope="user" if="eq($Provincia,Córdoba)"/>
@@ -67,13 +80,19 @@
 			<var name="CodigoProvincia" value="TUxBUFNBTm9lOTlk" scope="user" if="eq($Provincia,Santiago del Estero)"/>
 			<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if="eq($Provincia,San Luis)"/>
 			<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if="eq($Provincia,Santa Cruz)"/>
+			
+			<!--Alamcena si prefiere productos nuevos o usados-->
 			<output value="¿Prefieres productos nuevos o usados?"/>
+			<pattern value="(Nuevos|Usados)" name="Condicion"/>
 			<input pattern="* $Condicion"/>
 			<sample>
 				<item>Nuevos</item>
 				<item>Usados</item>
 			</sample>
-			<var name="$CodigoCondicion" value="$Condicion" scope="user"/>
+			<var name="$CodigoCondicion" value="new" scope="user" if="eq($Condicion,Nuevos)"/>
+			<var name="$CodigoCondicion" value="used" scope="user" if="eq($Condicion,Usados)"/>
+			
+			<!--Alamcena si prefiere envios gratis o solo mercado envios-->
 			<output value="¿Envio gratis?"/>
 			<input pattern="* $SiNo"/>
 			<sample>
@@ -82,6 +101,8 @@
 			</sample>
 			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($SiNo,Si)"/>
 			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($SiNo,No)"/>
+			
+			<!--Mensaje de fin de configuracion-->
 			<output>
 				<item>Felicitaciones, ¡ya me has configurado!</item>
 				<item>Ahora solo debes buscar tu producto</item>
@@ -92,6 +113,7 @@
 		</context>
 	</input>	
 
+	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
 	<input pattern="* (hola) *" if="full($Configurado) and eq($Configurado,Si)">	
 		<context id="VolverConfigurar">
 			<output>
