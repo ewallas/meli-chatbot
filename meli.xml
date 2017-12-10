@@ -15,12 +15,12 @@
 					<output value="¿Cual es tu provincia?" />
 					<!--Patron de provincias disponibles-->
 					<pattern name="Provincia">
-						<pattern value="(Capital Federal|Buenos Aires Sur|Córdoba)"/>
+						<pattern value="(Capital Federal|Buenos Aires Sur|Cordoba)"/>
 						<pattern value="(Buenos Aires Oeste|Buenos Aires Norte|Santa Fe)"/>
-						<pattern value="(Buenos Aires Atlántica|Buenos Aires Interior|Tucumán)"/>
+						<pattern value="(Buenos Aires Atlantica|Buenos Aires Interior|Tucuman)"/>
 						<pattern value="(Misiones|Mendoza|Neuquén)"/>
 						<pattern value="(La Pampa|Jujuy|Chaco)"/>
-						<pattern value="(Formosa|La Rioja|Río Negro)"/>
+						<pattern value="(Formosa|La Rioja|Rio Negro)"/>
 						<pattern value="(Salta|San Juan|Santiago del Estero)"/>
 						<pattern value="(San Luis|Santa Cruz)"/>
 					</pattern>
