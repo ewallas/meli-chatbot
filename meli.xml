@@ -8,8 +8,8 @@
 			<output value="Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!"/>
 			
 			<!--Almacena si prefiere buscar en tiendas oficiales-->
-			<output value="¿Prefires siempre las tiendas oficiales?"/>
 			<input pattern="* $SiNo *">
+				<output value="¿Prefires siempre las tiendas oficiales?"/>
 				<sample>
 					<item>Si</item>
 					<item>No</item>
