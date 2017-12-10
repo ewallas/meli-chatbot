@@ -155,8 +155,6 @@
 			</get>
 			<!--Obtiene la cantidad de resultados -->
 			<var name="CantidadResultados" scope="context" value="get('primary_results',get('paging',$Resultados)"/>
-			<!--Informa si no hay resultados -->
-			<context id="SinResultados" if="$CantidadResultados==0"/>
 			<!--Muestra un resultado -->
 			<var name="Producto" scope="context" value="get(0,get('results',$Resultados))"/>
 			<var name="TituloProducto" scope="context" value="get('title',$Prodcuto)"/>
