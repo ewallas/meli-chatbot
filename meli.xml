@@ -1,4 +1,5 @@
 <context id="raiz">
+	<input pattern="* (hola) *" if="!full($Configurado) or eq($Configurado,No)">	
 	<context id="Configurar">
 		<input pattern="* (hola) *" if="!full($Configurado) or eq($Configurado,No)">
 			<output>
