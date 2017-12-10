@@ -1,96 +1,5 @@
 <context>
-	<input pattern="* (hola) *" if="!full($Configurado) or eq($Configurado,No)">
-		<context id="Configurar">
-			<output>
-				<item>Hola soy tu asistente buscador en Mercado Libre ¡Vamos a configurarme!</item>
-				<item>¿Prefires siempre las tiendas oficiales?</item>
-			</output>
-			<input pattern="* $SiNo *">
-				<sample>
-					<item>Si</item>
-					<item>No</item>
-				</sample>
-				<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,Si)"/>
-				<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,No)"/>				
-				<output value="¿Cual es tu provincia?"/>
-				<input pattern="* $Provincia">
-					<sample>
-						<item>Capital Federal</item>
-						<item>Bs.As. G.B.A. Sur</item>
-						<item>Córdoba</item>
-						<item>Bs.As. G.B.A. Oeste</item>
-						<item>Bs.As. G.B.A. Norte</item>
-						<item>Santa Fe</item>
-						<item>Bs.As. Costa Atlántica</item>
-						<item>Buenos Aires Interior</item>
-						<item>Tucumán</item>
-						<item>Misiones</item>
-						<item>Mendoza</item>
-						<item>Neuquén</item>
-						<item>La Pampa</item>
-						<item>Jujuy</item>
-						<item>Chaco</item>
-						<item>Formosa</item>
-						<item>La Rioja</item>
-						<item>Río Negro</item>
-						<item>Salta</item>
-						<item>San Juan</item>
-						<item>Santiago del Estero</item>
-						<item>San Luis</item>
-						<item>Santa Cruz</item>
-					</sample>
-					<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if="eq($Provincia,Capital Federal)"/>
-					<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if="eq($Provincia,Bs.As. G.B.A. Sur)"/>
-					<var name="CodigoProvincia" value="TUxBUENPUmFkZGIw" scope="user" if="eq($Provincia,Córdoba)"/>
-					<var name="CodigoProvincia" value="TUxBUEdSQWVmNTVm" scope="user" if="eq($Provincia,Bs.As. G.B.A. Oeste)"/>
-					<var name="CodigoProvincia" value="TUxBUEdSQWU4ZDkz" scope="user" if="eq($Provincia,Bs.As. G.B.A. Norte)"/>
-					<var name="CodigoProvincia" value="TUxBUFNBTmU5Nzk2" scope="user" if="eq($Provincia,Santa Fe)"/>
-					<var name="CodigoProvincia" value="TUxBUENPU2ExMmFkMw" scope="user" if="eq($Provincia,Bs.As. Costa Atlántica)"/>
-					<var name="CodigoProvincia" value="TUxBUFpPTmFpbnRl" scope="user" if="eq($Provincia,Buenos Aires Interior)"/>
-					<var name="CodigoProvincia" value="TUxBUFRVQ244NmM3" scope="user" if="eq($Provincia,Tucumán)"/>
-					<var name="CodigoProvincia" value="TUxBUE1JU3MzNjIx" scope="user" if="eq($Provincia,Misiones)"/>
-					<var name="CodigoProvincia" value="TUxBUE1FTmE5OWQ4" scope="user" if="eq($Provincia,Mendoza)"/>
-					<var name="CodigoProvincia" value="TUxBUE5FVW4xMzMzNQ" scope="user" if="eq($Provincia,Neuquén)"/>
-					<var name="CodigoProvincia" value="TUxBUExBWmE1OWMy" scope="user" if="eq($Provincia,La Pampa)"/>
-					<var name="CodigoProvincia" value="TUxBUEpVSnk3YmUz" scope="user" if="eq($Provincia,Jujuy)"/>
-					<var name="CodigoProvincia" value="TUxBUENIQW8xMTNhOA" scope="user" if="eq($Provincia,Chaco)"/>
-					<var name="CodigoProvincia" value="TUxBUEZPUmE1OTk5" scope="user" if="eq($Provincia,Formosa)"/>
-					<var name="CodigoProvincia" value="TUxBUExBWmEyNzY0" scope="user" if="eq($Provincia,La Rioja)"/>
-					<var name="CodigoProvincia" value="TUxBUFLNT29iZmZm" scope="user" if="eq($Provincia,Río Negro)"/>
-					<var name="CodigoProvincia" value="TUxBUFNBTGFjMTJi" scope="user" if="eq($Provincia,Salta)"/>
-					<var name="CodigoProvincia" value="TUxBUFNBTm5lYjU4" scope="user" if="eq($Provincia,San Juan)"/>
-					<var name="CodigoProvincia" value="TUxBUFNBTm9lOTlk" scope="user" if="eq($Provincia,Santiago del Estero)"/>
-					<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if="eq($Provincia,San Luis)"/>
-					<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if="eq($Provincia,Santa Cruz)"/>
-					<output value="¿Prefieres productos nuevos o usados?"/>
-					<input pattern="* $Condicion">
-						<sample>
-							<item>Nuevos</item>
-							<item>Usados</item>
-						</sample>
-						<var name="$CodigoCondicion" value="$Condicion" scope="user"/>
-						<output value="¿Envio gratis?"/>
-						<input pattern="* $SiNo">
-							<sample>
-								<item>Si</item>
-								<item>No</item>
-							</sample>
-							<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($SiNo,Si)"/>
-							<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($SiNo,No)"/>
-							<output>
-								<item>Felicitaciones, ¡ya me has configurado!</item>
-								<item>Ahora solo debes buscar tu producto</item>
-								<item>Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!</item>
-								<item>Ej: Me gustaria comprar un Samsung S8 a 9000 pesos</item>
-							</output>
-							<var name="Configurado" value="Si" scope="user"/>
-						</input>				
-					</input>
-				</input>
-			</input> 
-		</context>
-	</input>	
-
+	
 	<input pattern="* (hola) *" if="full($Configurado) and eq($Configurado,Si)">	
 		<context id="VolverConfigurar">
 			<output>
@@ -103,31 +12,13 @@
 					<item>Si</item>
 					<item>No</item>
 				</sample>
-				<var name="Configurado" value="No" scope="user" if="eq($SiNo,Si)"/>
-				<context id="Configurar" if="eq($SiNo,Si)"/>
+				<context>
+					<var name="Configurado" value="No" scope="user" if="eq($SiNo,Si)"/>
+					<context id="Configurar" if="eq($SiNo,Si)"/>
+				</context>
 			</input>
 		</context>
 	</input>
 
-	<input pattern="* (quiero|gustaria|deseo|necesito)* [(comprar|tener|adquirir|obtener|ver|saber de|saber cuanto sale)*] [(una|un)] $Busqueda::Text [(por|a|entre los|)*] [$Precio::Number]">
-		<context id="buscador">
-			<output value="Debe ingresar una busqueda valida. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos" if="empty($Busqueda) and empty($Precio)"/>
-			<context  id="raiz"/>
-			<var name="PrecioMinimo" value="$Precio * 0.85" scope="context"/>
-			<var name="PrecioMaximo" value="$Precio * 1.15" scope="context"/>
-			<get url="https://api.mercadolibre.com/sites/MLA/search" var="ResultadosCompletos">
-				<param name="official_store" value="$CodigoTiendaOficial"/>
-				<param name="state" value="$CodigoProvincia"/>
-				<param name="condition" value="$CodigoCondicion"/>
-				<param name="shipping" value="$CodigoEnvioGratis"/>
-				<param name="has_pictures" value="yes"/>
-				<param name="accepts_mercadopago" value="yes"/>
-				<param name="limit" value="3"/>
-				<param name="price" value="$PrecioMinimo-$PrecioMaximo"/>
-				<param name="sort" value="price_asc"/>
-				<param name="q" value="$Busqueda"/>
-			</get>
-			<output value="$ResultadosCompletos"/>
-		</context>
-	</input>
+	
 </context>
