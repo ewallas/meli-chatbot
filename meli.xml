@@ -132,8 +132,6 @@
 
 	<!--Busqueda de productos especificos-->
 	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] * [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata|saber de|saber cuanto sale)*] * [(una|un|a|de|en|la|lo)*] {$Busqueda::Text [* $Precio::Number]}">
-		<!-- Si no se realizo una busqueda valida redirije a volver a configurar-->
-		<context  id="VolverConfigurar" if="empty($Busqueda)"/>
 			
 		<context id="buscador">
 			
@@ -155,6 +153,8 @@
 			</get>
 			<!--Obtiene la cantidad de resultados -->
 			<var name="CantidadResultados" scope="context" value="get('primary_results',get('paging',$Resultados)"/>
+			<!--Informa si no hay resultados -->
+			<context id="SinResultados" if="$CantidadResultados==0"/>
 			<!--Muestra un resultado -->
 			<var name="Producto" scope="context" value="get(0,get('results',$Resultados))"/>
 			<var name="TituloProducto" scope="context" value="get('title',$Prodcuto)"/>
