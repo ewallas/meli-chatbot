@@ -1,5 +1,4 @@
 <context>
-	
 	<input pattern="* (hola) *" if="full($Configurado) and eq($Configurado,Si)">	
 		<context id="VolverConfigurar">
 			<output>
@@ -8,17 +7,9 @@
 				<item>Ya estoy configurado con tus preferencias ¿Deseas hacerlo nuevamente?</item>
 			</output>
 			<input pattern="* $SiNo">
-				<sample>
-					<item>Si</item>
-					<item>No</item>
-				</sample>
-				<context>
-					<var name="Configurado" value="No" scope="user" if="eq($SiNo,Si)"/>
-					<context id="Configurar" if="eq($SiNo,Si)"/>
-				</context>
+				<var name="Configurado" value="No" scope="user" if="eq($SiNo,Si)"/>
+				<context id="Configurar" if="eq($SiNo,Si)"/>
 			</input>
 		</context>
 	</input>
-
-	
 </context>
