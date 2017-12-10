@@ -6,6 +6,7 @@
 				<item>Ej: Me gustaria comprar un Samsung S8 a 9000 pesos</item>				
 				<item>Ya estoy configurado con tus preferencias ¿Deseas hacerlo nuevamente?</item>
 			</output>
+			<pattern name="SiNo" value="(Si|No)"/>
 			<input pattern="* $SiNo"/>
 			<sample>
 				<item>Si</item>
