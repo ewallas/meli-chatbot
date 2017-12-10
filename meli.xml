@@ -14,7 +14,7 @@
 					<!--Almacena la provincia del usuario-->
 					<output value="¿Cual es tu provincia?" />
 					<!--Patron de provincias disponibles-->
-					<pattern name="Provincia" value="(Cordoba|La Pampa|Jujuy|Chaco|Misiones|Mendoza|Neuquén)"/>
+					<pattern name="Provincia" value="(Cordoba|Jujuy)"/>
 					<input pattern="* $Provincia *">
 						<context id="Configuracion2-4">
 							<!--Guarda el codigo de la provincia-->
