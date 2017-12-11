@@ -147,16 +147,7 @@
 			<var name="MonedaProducto" scope="context" value="get('currency_id',$Prodcuto)" if="$CantidadResultados>0"/>
 			<var name="LinkProducto" scope="context" value="get('permalink',$Prodcuto)" if="$CantidadResultados>0"/>
 			<var name="ImagenProducto" scope="context" value="get('thumbnail',$Prodcuto)" if="$CantidadResultados>0"/>	
-			<output>
-				<item>
-					<![CDATA[
-						<p>Te encontre este prodcuto de $CantidadResultados productos.</p>
-						<h3>$TituloProducto</h3>
-						<h5>$PrecioProducto $MonedaProducto</h5>
-						<a href="$LinkProducto">Ver mas</a>
-					]]>		
-				</item>
-			</output>
+			<output value="Te encontre este prodcuto de $CantidadResultados productos. $TituloProducto. $PrecioProducto $MonedaProducto. $LinkProducto."/>
 		</context>
 	</input>
 
