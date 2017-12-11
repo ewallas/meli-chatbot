@@ -122,15 +122,16 @@
 			<var name="PrecioMaximo" value="115 * $Number / 100" scope="context"/>
 			<!-- Realiza una llamada a la api en busca de productos coincidentes -->
 			<get url="https://api.mercadolibre.com/sites/MLA/search" var="Resultados">
+				<param name="q" value="$Text"/>
+				<param name="sort" value="price_asc"/>
+				<param name="price" value="$PrecioMinimo:Text-$PrecioMaximo:Text"/>
+				<param name="limit" value="1"/>
+				<param name="accepts_mercadopago" value="yes"/>
 				<param name="official_store" value="$CodigoTiendaOficial"/>
 				<param name="state" value="$CodigoProvincia"/>
 				<param name="condition" value="$CodigoCondicion"/>
 				<param name="shipping" value="$CodigoEnvioGratis"/>
 				<param name="has_pictures" value="yes"/>
-				<param name="accepts_mercadopago" value="yes"/>
-				<param name="limit" value="1"/>
-				<param name="sort" value="price_asc"/>
-				<param name="q" value="$Text"/>
 			</get>
 
 			<!--Obtiene la cantidad de resultados -->
