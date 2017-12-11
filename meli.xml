@@ -150,7 +150,7 @@
 	</input>
 
 
-	<input pattern="[*] [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata)*] [(una|un|a|de|en|la|lo)*] $Text *" if='$Configurado=="Si"'>			
+	<input pattern="[*] [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata)*] [(una|un|a|de|en|la|lo)*] $Text*" if='$Configurado=="Si"'>			
 		<context id="BuscadorConfiguradoTexto">
 			<!-- Realiza una llamada a la api en busca de productos coincidentes -->
 			<get url="https://api.mercadolibre.com/sites/MLA/search" var="Resultados">
