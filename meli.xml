@@ -4,49 +4,100 @@
 	
 	<!--Si dice hola y no esta configurado el perfil-->
 	<input pattern="* hola *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<context id="CargarProvincia"/>
+		<context id="CargarCondicion"/>
+	</input>
+
+	<!--Alamcena si prefiere productos nuevos o usados-->
+	<pattern name="Condicion" value="(nuev*:1|usad*:2)" >
+	<input pattern="* $Condicion *" if="empty($Configurado) or eq($Cofigurado,'No')">
+		<context id="CargarCondicion">
+			<output value="Hola, soy tu asistente para comprar en mercadolibre, te voy a hacer unas preguntas para buscar mejor. Primera ¿Prefieres productos nuevos o usados?" if="empty($CodigoCondicion)"/>
+			<output value="Comenzemos a configurarnos de nuevo, ¿Prefieres productos nuevos o usados?" if="full($CodigoCondicion)"/>
+			<sample>
+				<item>Nuevos</item>
+				<item>Usados</item>
+			</sample>
+			<var name="$CodigoCondicion" value="new" scope="user" if="eq($Condicion,1)"/>
+			<var name="$CodigoCondicion" value="used" scope="user" if="eq($Condicion,2)"/>
+			<context id="CargarProvincia" />
+		</context>
 	</input>
 
 	<!--Patron de provincias disponibles-->
 	<pattern name="Provincia">
-		<pattern value="(Capital Federal|Buenos Aires Sur|Cordoba)"/>
-		<pattern value="(Buenos Aires Oeste|Buenos Aires Norte|Santa Fe)"/>
-		<pattern value="(Buenos Aires Atlantica|Buenos Aires Interior|Tucuman)"/>
-		<pattern value="(Misiones|Mendoza|Neuquén)"/>
-		<pattern value="(La Pampa|Jujuy|Chaco)"/>
-		<pattern value="(Formosa|La Rioja|Rio Negro)"/>
-		<pattern value="(Salta|San Juan|Santiago del Estero)"/>
-		<pattern value="(San Luis|Santa Cruz)"/>
+		<pattern value="(Capital Federal:1|Buenos Aires Sur:2|Cordoba:3)"/>
+		<pattern value="(Buenos Aires Oeste:4|Buenos Aires Norte:5|Santa Fe:6)"/>
+		<pattern value="(Buenos Aires Atlantica:7|Buenos Aires Interior:8|Tucuman:9)"/>
+		<pattern value="(Misiones:10|Mendoza:11|Neuquen:12)"/>
+		<pattern value="(La Pampa:13|Jujuy:14|Chaco:15)"/>
+		<pattern value="(Formosa:16|La Rioja:17|Rio Negro:18)"/>
+		<pattern value="(Salta:19|San Juan:20|Santiago del Estero:21)"/>
+		<pattern value="(San Luis:22|Santa Cruz:23)"/>
 	</pattern>
-	<input pattern="* $Provincia *">
+	<input pattern="* $Provincia *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarProvincia">
-			<output value="Provincia" />
+			<output value="¿De cual provincia te gustaria buscar?(Capital Federal,Buenos Aires Sur,Cordoba,Buenos Aires Oeste,Buenos Aires Norte,Santa Fe,Buenos Aires Costa Atlantica,Buenos Aires Interior,Tucuman,Misiones,Mendoza,Neuquen,La Pampa,Jujuy,Chaco,Formosa,La Rioja,Rio Negro,Salta,San Juan,Santiago del Estero,San Luis y Santa Cruz)" />
 			<!--Guarda el codigo de la provincia-->
-			<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if="eq($Provincia,'Capital Federal')"/>
-			<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if="eq($Provincia,'Buenos Aires Sur')"/>
-			<var name="CodigoProvincia" value="TUxBUENPUmFkZGIw" scope="user" if="eq($Provincia,'Córdoba')"/>
-			<var name="CodigoProvincia" value="TUxBUEdSQWVmNTVm" scope="user" if="eq($Provincia,'Buenos Aires Oeste')"/>
-			<var name="CodigoProvincia" value="TUxBUEdSQWU4ZDkz" scope="user" if="eq($Provincia,'Buenos Aires Norte')"/>
-			<var name="CodigoProvincia" value="TUxBUFNBTmU5Nzk2" scope="user" if="eq($Provincia,'Santa Fe')"/>
-			<var name="CodigoProvincia" value="TUxBUENPU2ExMmFkMw" scope="user" if="eq($Provincia,'Buenos Aires Costa Atlántica')"/>
-			<var name="CodigoProvincia" value="TUxBUFpPTmFpbnRl" scope="user" if="eq($Provincia,'Buenos Aires Interior')"/>
-			<var name="CodigoProvincia" value="TUxBUFRVQ244NmM3" scope="user" if="eq($Provincia,'Tucumán')"/>
-			<var name="CodigoProvincia" value="TUxBUE1JU3MzNjIx" scope="user" if="eq($Provincia,'Misiones')"/>
-			<var name="CodigoProvincia" value="TUxBUE1FTmE5OWQ4" scope="user" if="eq($Provincia,'Mendoza')"/>
-			<var name="CodigoProvincia" value="TUxBUE5FVW4xMzMzNQ" scope="user" if="eq($Provincia,'Neuquén')"/>
-			<var name="CodigoProvincia" value="TUxBUExBWmE1OWMy" scope="user" if="eq($Provincia,'La Pampa')"/>
-			<var name="CodigoProvincia" value="TUxBUEpVSnk3YmUz" scope="user" if="eq($Provincia,'Jujuy')"/>
-			<var name="CodigoProvincia" value="TUxBUENIQW8xMTNhOA" scope="user" if="eq($Provincia,'Chaco')"/>
-			<var name="CodigoProvincia" value="TUxBUEZPUmE1OTk5" scope="user" if="eq($Provincia,'Formosa')"/>
-			<var name="CodigoProvincia" value="TUxBUExBWmEyNzY0" scope="user" if="eq($Provincia,'La Rioja')"/>
-			<var name="CodigoProvincia" value="TUxBUFLNT29iZmZm" scope="user" if="eq($Provincia,'Río Negro')"/>
-			<var name="CodigoProvincia" value="TUxBUFNBTGFjMTJi" scope="user" if="eq($Provincia,'Salta')"/>
-			<var name="CodigoProvincia" value="TUxBUFNBTm5lYjU4" scope="user" if="eq($Provincia,'San Juan')"/>
-			<var name="CodigoProvincia" value="TUxBUFNBTm9lOTlk" scope="user" if="eq($Provincia,'Santiago del Estero')"/>
-			<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if="eq($Provincia,'San Luis')"/>
-			<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if="eq($Provincia,'Santa Cruz')"/>
+			<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if="eq($Provincia,1)"/>
+			<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if="eq($Provincia,2)"/>
+			<var name="CodigoProvincia" value="TUxBUENPUmFkZGIw" scope="user" if="eq($Provincia,3)"/>
+			<var name="CodigoProvincia" value="TUxBUEdSQWVmNTVm" scope="user" if="eq($Provincia,4)"/>
+			<var name="CodigoProvincia" value="TUxBUEdSQWU4ZDkz" scope="user" if="eq($Provincia,5)"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTmU5Nzk2" scope="user" if="eq($Provincia,6)"/>
+			<var name="CodigoProvincia" value="TUxBUENPU2ExMmFkMw" scope="user" if="eq($Provincia,7)"/>
+			<var name="CodigoProvincia" value="TUxBUFpPTmFpbnRl" scope="user" if="eq($Provincia,8)"/>
+			<var name="CodigoProvincia" value="TUxBUFRVQ244NmM3" scope="user" if="eq($Provincia,9)"/>
+			<var name="CodigoProvincia" value="TUxBUE1JU3MzNjIx" scope="user" if="eq($Provincia,10)"/>
+			<var name="CodigoProvincia" value="TUxBUE1FTmE5OWQ4" scope="user" if="eq($Provincia,11)"/>
+			<var name="CodigoProvincia" value="TUxBUE5FVW4xMzMzNQ" scope="user" if="eq($Provincia,12)"/>
+			<var name="CodigoProvincia" value="TUxBUExBWmE1OWMy" scope="user" if="eq($Provincia,13)"/>
+			<var name="CodigoProvincia" value="TUxBUEpVSnk3YmUz" scope="user" if="eq($Provincia,14)"/>
+			<var name="CodigoProvincia" value="TUxBUENIQW8xMTNhOA" scope="user" if="eq($Provincia,15)"/>
+			<var name="CodigoProvincia" value="TUxBUEZPUmE1OTk5" scope="user" if="eq($Provincia,16)"/>
+			<var name="CodigoProvincia" value="TUxBUExBWmEyNzY0" scope="user" if="eq($Provincia,17)"/>
+			<var name="CodigoProvincia" value="TUxBUFLNT29iZmZm" scope="user" if="eq($Provincia,18)"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTGFjMTJi" scope="user" if="eq($Provincia,19)"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTm5lYjU4" scope="user" if="eq($Provincia,20)"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTm9lOTlk" scope="user" if="eq($Provincia,21)"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if="eq($Provincia,22)"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if="eq($Provincia,23)"/>
+			<context id="CargarTiendaOficial"/>
 		</context>		
 	</input>
+
+	
+	<!--Alamcena si prefiere productos nuevos o usados-->
+	<input pattern="* $SiNo *" if="empty($Configurado) or eq($Cofigurado,'No')">
+		<context id="CargarTiendaOficial">
+			<output value="¿Prefieres comprar en tiendas oficiales?"/>
+			<sample>
+				<item>Si</item>
+				<item>No</item>
+			</sample>
+			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,'Si')"/>
+			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,'No')"/>				
+			<context id="CargarEnvio" />
+		</context>
+	</input>			
+
+
+	<!--Alamcena si prefiere envios gratis o solo mercado envios-->
+	<input pattern="* $SiNo *" if="empty($Configurado) or eq($Cofigurado,'No')">
+		<context id="CargarEnvio">
+			<output value="¿Envio gratis?"/>
+			<sample>
+				<item>Si</item>
+				<item>No</item>
+			</sample>
+			<!--Mensaje de fin de configuracion-->
+			<output value="Felicitaciones, ¡ya me has configurado!. Ahora solo debes buscar tu producto. Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos"/>
+			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($SiNo,'Si')"/>
+			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($SiNo,'No')"/>
+			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
+			<context/>
+		</context>
+	</input>
+							
 
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
 	<input pattern="*">	
