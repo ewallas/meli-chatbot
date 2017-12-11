@@ -9,7 +9,7 @@
 			<!--Almacena la provincia del usuario-->
 			<output value="¿Cual es tu provincia?" />
 			<!--Patron de provincias disponibles-->
-			<pattern name="Provincia">
+			<pattern name="Provincias">
 				<pattern value="(Capital Federal|Buenos Aires Sur|Cordoba)"/>
 				<pattern value="(Buenos Aires Oeste|Buenos Aires Norte|Santa Fe)"/>
 				<pattern value="(Buenos Aires Atlantica|Buenos Aires Interior|Tucuman)"/>
@@ -19,7 +19,7 @@
 				<pattern value="(Salta|San Juan|Santiago del Estero)"/>
 				<pattern value="(San Luis|Santa Cruz)"/>
 			</pattern>
-			<input pattern="* $Provincia *">
+			<input pattern="* $Provincias *">
 				<output value="Okas"/>
 			</input>		
 		</context>
