@@ -114,7 +114,7 @@
 	</input>
 
 	<!--Busqueda de productos especificos-->
-	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] * [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata|saber de|saber cuanto sale)*] * [(una|un|a|de|en|la|lo)*] {$Text [a|por] $Number}">			
+	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata|saber de|saber cuanto sale)*] [(una|un|a|de|en|la|lo)*] {$Text [a|por] $Number}">			
 		<context id="buscador" if='eq($Configurado,"Si")'>
 			<!--Calcula un rango de precios para el que buscar productos-->
 			<var name="PrecioMinimo" value="$Precio * 0.85" scope="context" if="full($Number)"/>
