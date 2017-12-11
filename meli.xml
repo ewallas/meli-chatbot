@@ -7,22 +7,7 @@
 		<context id="CargarCondicion"/>
 	</input>
 
-	<!--Alamcena si prefiere productos nuevos o usados-->
-	<pattern name="Condicion" value="(nuev*:1|usad*:2)" >
-	<input pattern="* $Condicion *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<context id="CargarCondicion">
-			<output value="Hola, soy tu asistente para comprar en mercadolibre, te voy a hacer unas preguntas para buscar mejor. Primera ¿Prefieres productos nuevos o usados?" if="empty($CodigoCondicion)"/>
-			<output value="Comenzemos a configurarnos de nuevo, ¿Prefieres productos nuevos o usados?" if="full($CodigoCondicion)"/>
-			<sample>
-				<item>Nuevos</item>
-				<item>Usados</item>
-			</sample>
-			<var name="$CodigoCondicion" value="new" scope="user" if="eq($Condicion,1)"/>
-			<var name="$CodigoCondicion" value="used" scope="user" if="eq($Condicion,2)"/>
-			<context id="CargarProvincia" />
-		</context>
-	</input>
-
+	
 	<!--Patron de provincias disponibles-->
 	<pattern name="Provincia">
 		<pattern value="(Capital Federal:1|Buenos Aires Sur:2|Cordoba:3)"/>
@@ -94,6 +79,7 @@
 			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($SiNo,'Si')"/>
 			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($SiNo,'No')"/>
 			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
+			<context/>
 		</context>
 	</input>
 							
