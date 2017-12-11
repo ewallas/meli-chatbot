@@ -118,7 +118,7 @@
 	<input pattern="$BusquedaPatron" if='$Configurado=="Si"'>			
 		<context id="BuscadorConfigurado">
 			<!--Calcula un rango de precios para el que buscar productos-->
-			<var name="Precio" value='get("Items",BusquedaPatron)' scope="context"/>
+			<var name="Precio" value='get("value",BusquedaPatron)' scope="context"/>
 			<var name="PrecioMinimo" value="100" scope="context"/>
 			<var name="PrecioMaximo" value="$Number + 100" scope="context"/>
 			<!-- Realiza una llamada a la api en busca de productos coincidentes -->
