@@ -20,11 +20,17 @@
 		<context id="CargarCondicion">
 			<var name="CodigoCondicion" value="new" scope="user" if='$Condicion=="1"'/>
 			<var name="CodigoCondicion" value="used" scope="user" if='$Condicion=="2"'/>
-			<output value="¿En cual provincia te gustaria buscar?(Capital Federal,Buenos Aires Sur,Cordoba,Buenos Aires Oeste,Buenos Aires Norte,Santa Fe,Buenos Aires Costa Atlantica,Buenos Aires Interior,Tucuman,Misiones,Mendoza,Neuquen,La Pampa,Jujuy,Chaco,Formosa,La Rioja,Rio Negro,Salta,San Juan,Santiago del Estero,San Luis y Santa Cruz)" />
+			<output value="Prefieres comprar en"/>
+			<sample>
+				<item>Tienda oficial</item>
+				<item>Cualquier vendedor</item>
+			</sample>
+		
+			<!--<output value="¿En cual provincia te gustaria buscar?(Capital Federal,Buenos Aires Sur,Cordoba,Buenos Aires Oeste,Buenos Aires Norte,Santa Fe,Buenos Aires Costa Atlantica,Buenos Aires Interior,Tucuman,Misiones,Mendoza,Neuquen,La Pampa,Jujuy,Chaco,Formosa,La Rioja,Rio Negro,Salta,San Juan,Santiago del Estero,San Luis y Santa Cruz)" />-->
 		</context>
 	</input>
 
-	<!--Patron de provincias disponibles-->
+	<!--Patron de provincias disponibles
 	<pattern name="Provincia">
 		<pattern value="(Capital Federal:1|Buenos Aires Sur:2|Cordoba:3)"/>
 		<pattern value="(Buenos Aires Oeste:4|Buenos Aires Norte:5|Santa Fe:6)"/>
@@ -37,7 +43,7 @@
 	</pattern>
 	<input pattern="* $Provincia *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarProvincia">
-			<!--Guarda el codigo de la provincia-->
+			<!-Guarda el codigo de la provincia
 			<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if='$Provincia=="1"'/>
 			<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if='$Provincia=="2"'/>
 			<var name="CodigoProvincia" value="TUxBUENPUmFkZGIw" scope="user" if='$Provincia=="3"'/>
@@ -68,7 +74,7 @@
 			</sample>
 		</context>		
 	</input>
-
+	-->
 	<pattern name="TiendaOficial" value="((Tienda oficial):1|(Cualquier vendedor):2)"/>
 	<!--Alamcena si prefiere productos nuevos o usados-->
 	<input pattern="* $TiendaOficial *" if="empty($Configurado) or eq($Cofigurado,'No')">
@@ -128,7 +134,7 @@
 				<param name="limit" value="1"/>
 				<param name="accepts_mercadopago" value="yes"/>
 				<param name="official_store" value="$CodigoTiendaOficial"/>
-				<param name="state" value="$CodigoProvincia"/>
+				<!--<param name="state" value="$CodigoProvincia"/>-->
 				<param name="condition" value="$CodigoCondicion"/>
 				<param name="shipping" value="$CodigoEnvioGratis"/>
 				<param name="has_pictures" value="yes"/>
