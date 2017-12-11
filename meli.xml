@@ -160,7 +160,13 @@
 		</context>
 	</input>
 
-	<input pattern="$BusquedaPatron" if='empty($Configurado) or eq($Configurado,"Si")'>			
+	<input pattern="$BusquedaPatron" if='empty($Configurado) or eq($Configurado,"No")'>			
 		<context id="ComenzarConfiguracion"/>
+	</input>
+
+	<input pattern="configuraciones">			
+		<context id="MuestraConfiguraciones">
+			<output value="Tienda oficial:$CodigoTiendaOficial - Provincia:$CodigoProvincia - Condicion:$CodigoCondicion - Envio:$CodigoEnvioGratis" />
+		</context>
 	</input>
 </context>
