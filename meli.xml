@@ -4,21 +4,23 @@
 	
 	<!--Si dice hola y no esta configurado el perfil-->
 	<input pattern="* hola *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<context id="CargarCondicion"/>
-	</input>
-
-	<!--Alamcena si prefiere productos nuevos o usados-->
-	<pattern name="Condicion" value="(nuev*:1|usad*:2)"/>
-	<input pattern="* $Condicion *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<context id="CargarCondicion">
+		<context id="ComenzarConfiguracion">
 			<output value="Hola, soy tu asistente para comprar en mercadolibre, te voy a hacer unas preguntas para buscar mejor. Primera ¿Prefieres productos nuevos o usados?" if="empty($CodigoCondicion)"/>
 			<output value="Comenzemos a configurarnos de nuevo, ¿Prefieres productos nuevos o usados?" if="full($CodigoCondicion)"/>
 			<sample>
 				<item>Nuevos</item>
 				<item>Usados</item>
 			</sample>
+		</context>>
+	</input>
+
+	<!--Alamcena si prefiere productos nuevos o usados-->
+	<pattern name="Condicion" value="(Nuev*:1|Usad*:2)"/>
+	<input pattern="* $Condicion *" if="empty($Configurado) or eq($Cofigurado,'No')">
+		<context id="CargarCondicion">
 			<var name="$CodigoCondicion" value="new" scope="user" if="eq($Condicion,1)"/>
 			<var name="$CodigoCondicion" value="used" scope="user" if="eq($Condicion,2)"/>
+			<output value="¿En cual provincia te gustaria buscar?(Capital Federal,Buenos Aires Sur,Cordoba,Buenos Aires Oeste,Buenos Aires Norte,Santa Fe,Buenos Aires Costa Atlantica,Buenos Aires Interior,Tucuman,Misiones,Mendoza,Neuquen,La Pampa,Jujuy,Chaco,Formosa,La Rioja,Rio Negro,Salta,San Juan,Santiago del Estero,San Luis y Santa Cruz)" />
 		</context>
 	</input>
 
@@ -35,7 +37,6 @@
 	</pattern>
 	<input pattern="* $Provincia *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarProvincia">
-			<output value="¿De cual provincia te gustaria buscar?(Capital Federal,Buenos Aires Sur,Cordoba,Buenos Aires Oeste,Buenos Aires Norte,Santa Fe,Buenos Aires Costa Atlantica,Buenos Aires Interior,Tucuman,Misiones,Mendoza,Neuquen,La Pampa,Jujuy,Chaco,Formosa,La Rioja,Rio Negro,Salta,San Juan,Santiago del Estero,San Luis y Santa Cruz)" />
 			<!--Guarda el codigo de la provincia-->
 			<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if="eq($Provincia,1)"/>
 			<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if="eq($Provincia,2)"/>
@@ -60,36 +61,37 @@
 			<var name="CodigoProvincia" value="TUxBUFNBTm9lOTlk" scope="user" if="eq($Provincia,21)"/>
 			<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if="eq($Provincia,22)"/>
 			<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if="eq($Provincia,23)"/>
+			<output value="Prefieres comprar en"/>
 		</context>		
 	</input>
 
-	
+	<pattern name="TiendaOficial" value="((Tienda oficial):1|(Cualquier vendedor):2)"/>
 	<!--Alamcena si prefiere productos nuevos o usados-->
-	<input pattern="* $SiNo *" if="empty($Configurado) or eq($Cofigurado,'No')">
+	<input pattern="* $TiendaOficial *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarTiendaOficial">
-			<output value="¿Prefieres comprar en tiendas oficiales?"/>
 			<sample>
-				<item>Si</item>
-				<item>No</item>
+				<item>Tienda oficial</item>
+				<item>Cualquier vendedor</item>
 			</sample>
-			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,'Si')"/>
-			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,'No')"/>				
+			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($TiendaOficial,1)"/>
+			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($TiendaOficial,2)"/>
+			<output value="Prefiere envio"/>				
 		</context>
 	</input>			
 
 
 	<!--Alamcena si prefiere envios gratis o solo mercado envios-->
-	<input pattern="* $SiNo *" if="empty($Configurado) or eq($Cofigurado,'No')">
+	<pattern name="Envio" value="((Gratis):1|(Cualquiera):2)"/>
+	<input pattern="* $Envio *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarEnvio">
-			<output value="¿Envio gratis?"/>
 			<sample>
-				<item>Si</item>
-				<item>No</item>
+				<item>Gratis</item>
+				<item>Cualquiera</item>
 			</sample>
 			<!--Mensaje de fin de configuracion-->
 			<output value="Felicitaciones, ¡ya me has configurado!. Ahora solo debes buscar tu producto. Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos"/>
-			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($SiNo,'Si')"/>
-			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($SiNo,'No')"/>
+			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($Envio,1)"/>
+			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($Envio,2)"/>
 			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
 		</context>
 	</input>
