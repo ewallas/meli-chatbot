@@ -62,6 +62,10 @@
 			<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if="eq($Provincia,22)"/>
 			<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if="eq($Provincia,23)"/>
 			<output value="Prefieres comprar en"/>
+			<sample>
+				<item>Tienda oficial</item>
+				<item>Cualquier vendedor</item>
+			</sample>
 		</context>		
 	</input>
 
@@ -69,13 +73,13 @@
 	<!--Alamcena si prefiere productos nuevos o usados-->
 	<input pattern="* $TiendaOficial *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarTiendaOficial">
-			<sample>
-				<item>Tienda oficial</item>
-				<item>Cualquier vendedor</item>
-			</sample>
 			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($TiendaOficial,1)"/>
 			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($TiendaOficial,2)"/>
-			<output value="Prefiere envio"/>				
+			<output value="Prefiere envio"/>
+			<sample>
+				<item>Gratis</item>
+				<item>Cualquiera</item>
+			</sample>				
 		</context>
 	</input>			
 
@@ -84,10 +88,6 @@
 	<pattern name="Envio" value="((Gratis):1|(Cualquiera):2)"/>
 	<input pattern="* $Envio *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarEnvio">
-			<sample>
-				<item>Gratis</item>
-				<item>Cualquiera</item>
-			</sample>
 			<!--Mensaje de fin de configuracion-->
 			<output value="Felicitaciones, ¡ya me has configurado!. Ahora solo debes buscar tu producto. Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos"/>
 			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($Envio,1)"/>
