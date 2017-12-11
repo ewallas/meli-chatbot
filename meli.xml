@@ -113,9 +113,9 @@
 		</context>
 	</input>
 
-	<pattern name="BusquedaPatron" value="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata)*] [(una|un|a|de|en|la|lo)*] $Text* [a|por] $Number"/>
+	<pattern name="BusquedaPatron" value="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata)*] [(una|un|a|de|en|la|lo)*] $Text [a|por] $Number"/>
 	<!--Busqueda de productos especificos-->
-	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata)*] [(una|un|a|de|en|la|lo)*] $Text [a|por] $Number" if='$Configurado=="Si"'>			
+	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata)*] [(una|un|a|de|en|la|lo)*] $Text* [a|por] $Number" if='$Configurado=="Si"'>			
 		<context id="BuscadorConfigurado">
 			<!--Calcula un rango de precios para el que buscar productos-->
 			<var name="PrecioMinimo" value="85 * $Number / 100" scope="context"/>
