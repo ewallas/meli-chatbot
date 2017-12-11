@@ -20,10 +20,10 @@
 				<pattern value="(San Luis|Santa Cruz)"/>
 			</pattern>
 			<input pattern="* $Provincia *">
-				<output value="$Provincia">
+				<output value="$Provincia"/>
 			</input>		
 		</context>
-	</input>	
+	</input>
 
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
 	<input pattern="*">	
