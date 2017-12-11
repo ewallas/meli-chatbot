@@ -150,10 +150,10 @@
 	</input>
 
 
-	<input pattern="[*] [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata)*] [(una|un|a|de|en|la|lo)*] $Text [$Text2] [$Text3] [$Text4] [$Text5]" if='$Configurado=="Si"'>			
+	<input pattern="[*] [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata)*] [(una|un|a|de|en|la|lo)*] $T1 [$T2] [$T3] [$T4] [$5]" if='$Configurado=="Si"'>			
 		<context id="BuscadorConfiguradoTexto">
 			<!-- Realiza una llamada a la api en busca de productos coincidentes -->
-			<var name="Text" scope="context" value="$Text1 + $Text2 + $Text3 + $Text4 + $Text5"/>
+			<var name="Text" scope="context" value="$T1 + $T2 + $T3 + $T4 + $T5"/>
 			<get url="https://api.mercadolibre.com/sites/MLA/search" var="Resultados">
 				<param name="q" value="$Text"/>
 				<param name="sort" value="relevant"/>
