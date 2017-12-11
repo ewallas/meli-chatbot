@@ -18,7 +18,7 @@
 	<pattern name="Condicion" value="(Nuev*:1|Usad*:2)"/>
 	<input pattern="* $Condicion *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarCondicion">
-			<var name="CodigoCondicion" value="new" scope="user" if="eq($Condicion,'1')"/>
+			<var name="CodigoCondicion" value="new" scope="user"/>
 			<var name="CodigoCondicion" value="used" scope="user" if="eq($Condicion,'2')"/>
 			<output value="¿En cual provincia te gustaria buscar?(Capital Federal,Buenos Aires Sur,Cordoba,Buenos Aires Oeste,Buenos Aires Norte,Santa Fe,Buenos Aires Costa Atlantica,Buenos Aires Interior,Tucuman,Misiones,Mendoza,Neuquen,La Pampa,Jujuy,Chaco,Formosa,La Rioja,Rio Negro,Salta,San Juan,Santiago del Estero,San Luis y Santa Cruz)" />
 		</context>
