@@ -135,7 +135,7 @@
 			</get>
 
 			<!--Obtiene la cantidad de resultados -->
-			<var name="Paging" scope="context" value="get('paging',$Resultados)"/>
+			<var name="Paging" scope="context" value="javascript: Resultados.paging"/>
 			<var name="CantidadResultados" scope="context" value="get('primary_results',$Paging)"/>
 			<!--Informa si no hay resultados -->
 			<output value="No pude encontrar ningun producto que coincida" if='$CantidadResultados==0'/>
