@@ -118,8 +118,8 @@
 	<input pattern="$BusquedaPatron" if='eq($Configurado,"Si")'>			
 		<context id="BuscadorConfigurado">
 			<!--Calcula un rango de precios para el que buscar productos-->
-			<var name="PrecioMinimo" value="$Precio * 0.85" scope="context"/>
-			<var name="PrecioMaximo" value="$Precio * 1.15" scope="context"/>			
+			<var name="PrecioMinimo" value="85 * $Precio / 100" scope="context"/>
+			<var name="PrecioMaximo" value="115 * $Precio / 100" scope="context"/>			
 			<!-- Realiza una llamada a la api en busca de productos coincidentes -->
 			<get url="https://api.mercadolibre.com/sites/MLA/search" var="Resultados">
 				<param name="official_store" value="$CodigoTiendaOficial"/>
