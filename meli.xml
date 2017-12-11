@@ -65,22 +65,6 @@
 		</context>		
 	</input>
 
-	
-	<!--Alamcena si prefiere productos nuevos o usados-->
-	<input pattern="* $SiNo *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<context id="CargarTiendaOficial">
-			<output value="¿Prefieres comprar en tiendas oficiales?"/>
-			<sample>
-				<item>Si</item>
-				<item>No</item>
-			</sample>
-			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,'Si')"/>
-			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,'No')"/>				
-			<context id="CargarEnvio" />
-		</context>
-	</input>			
-
-
 							
 
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
