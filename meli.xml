@@ -19,7 +19,6 @@
 			</sample>
 			<var name="$CodigoCondicion" value="new" scope="user" if="eq($Condicion,1)"/>
 			<var name="$CodigoCondicion" value="used" scope="user" if="eq($Condicion,2)"/>
-			<context id="CargarProvincia" />
 		</context>
 	</input>
 							
