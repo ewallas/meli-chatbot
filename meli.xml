@@ -7,39 +7,22 @@
 		<context id="CargarCondicion"/>
 	</input>
 
-	
 	<!--Alamcena si prefiere productos nuevos o usados-->
-	<input pattern="* $SiNo *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<context id="CargarTiendaOficial">
-			<output value="¿Prefieres comprar en tiendas oficiales?"/>
+	<pattern name="Condicion" value="(nuev*:1|usad*:2)" >
+	<input pattern="* $Condicion *" if="empty($Configurado) or eq($Cofigurado,'No')">
+		<context id="CargarCondicion">
+			<output value="Hola, soy tu asistente para comprar en mercadolibre, te voy a hacer unas preguntas para buscar mejor. Primera ¿Prefieres productos nuevos o usados?" if="empty($CodigoCondicion)"/>
+			<output value="Comenzemos a configurarnos de nuevo, ¿Prefieres productos nuevos o usados?" if="full($CodigoCondicion)"/>
 			<sample>
-				<item>Si</item>
-				<item>No</item>
+				<item>Nuevos</item>
+				<item>Usados</item>
 			</sample>
-			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,'Si')"/>
-			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,'No')"/>				
-			<context id="CargarEnvio" />
-		</context>
-	</input>			
-
-
-	<!--Alamcena si prefiere envios gratis o solo mercado envios-->
-	<input pattern="* $SiNo *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<context id="CargarEnvio">
-			<output value="¿Envio gratis?"/>
-			<sample>
-				<item>Si</item>
-				<item>No</item>
-			</sample>
-			<!--Mensaje de fin de configuracion-->
-			<output value="Felicitaciones, ¡ya me has configurado!. Ahora solo debes buscar tu producto. Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos"/>
-			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($SiNo,'Si')"/>
-			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($SiNo,'No')"/>
-			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
+			<var name="$CodigoCondicion" value="new" scope="user" if="eq($Condicion,1)"/>
+			<var name="$CodigoCondicion" value="used" scope="user" if="eq($Condicion,2)"/>
+			<context id="CargarProvincia" />
 		</context>
 	</input>
 							
-
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
 	<input pattern="*">	
 		<context id="VolverConfigurar" if='full($Configurado) and eq($Configurado,"Si")'>
