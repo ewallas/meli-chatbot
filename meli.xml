@@ -140,11 +140,11 @@
 			<output value="No pude encontrar ningun producto que coincida" if='$CantidadResultados==0'/>
 			<!--Muestra un resultado -->
 			<var name="Producto" scope="context" value='get(0,get("results",$Resultados))' if="$CantidadResultados>0"/>
-			<var name="TituloProducto" scope="context" value='get("title",$Prodcuto)' if="$CantidadResultados>0"/>
-			<var name="PrecioProducto" scope="context" value='get("price",$Prodcuto)' if="$CantidadResultados>0"/>
-			<var name="MonedaProducto" scope="context" value='get("currency_id",$Prodcuto)' if="$CantidadResultados>0"/>
-			<var name="LinkProducto" scope="context" value='get("permalink",$Prodcuto)' if="$CantidadResultados>0"/>
-			<var name="ImagenProducto" scope="context" value='get("thumbnail",$Prodcuto)' if="$CantidadResultados>0"/>	
+			<var name="TituloProducto" scope="context" value='get("title",get(0,$Prodcuto))' if="$CantidadResultados>0"/>
+			<var name="PrecioProducto" scope="context" value='get(1,$Prodcuto)' if="$CantidadResultados>0"/>
+			<var name="MonedaProducto" scope="context" value='get(2,$Prodcuto)' if="$CantidadResultados>0"/>
+			<var name="LinkProducto" scope="context" value='get(11,$Prodcuto)' if="$CantidadResultados>0"/>
+			<var name="ImagenProducto" scope="context" value='get(12,$Prodcuto)' if="$CantidadResultados>0"/>	
 			<output value="Mira, hay $CantidadResultados, pero este me parece que es el mejor para tí. $TituloProducto. $PrecioProducto $MonedaProducto. $LinkProducto."/>
 		</context>
 	</input>
