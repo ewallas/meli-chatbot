@@ -132,6 +132,8 @@
 				<param name="sort" value="price_asc"/>
 				<param name="q" value="$Text"/>
 			</get>
+			<output value="Aca llegue"/>
+
 			<!--Obtiene la cantidad de resultados -->
 			<var name="CantidadResultados" scope="context" value="get('primary_results',get('paging',$Resultados)"/>
 			<!--Informa si no hay resultados -->
