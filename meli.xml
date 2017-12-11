@@ -4,17 +4,48 @@
 	
 	<!--Si dice hola y no esta configurado el perfil-->
 	<input pattern="* hola *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<output value="Hola, soy tu asistente de busqueda en mercadolibre"/>
-		<context id="ConfigurarProvincia" modal="true">
-			<!--Almacena la provincia del usuario-->
-			<output value="¿Cual es tu provincia?" />
-			<!--Patron de provincias disponibles-->
-			<input pattern="* (cordoba|jujuy)* *">
-				<context modal="true">
-					<output value="Okas"/>
-				</context>
-			</input>		
-		</context>
+		<context id="CargarProvincia"/>
+	</input>
+
+	<!--Patron de provincias disponibles-->
+	<pattern name="Provincia">
+		<pattern value="(Capital Federal|Buenos Aires Sur|Cordoba)"/>
+		<pattern value="(Buenos Aires Oeste|Buenos Aires Norte|Santa Fe)"/>
+		<pattern value="(Buenos Aires Atlantica|Buenos Aires Interior|Tucuman)"/>
+		<pattern value="(Misiones|Mendoza|Neuquén)"/>
+		<pattern value="(La Pampa|Jujuy|Chaco)"/>
+		<pattern value="(Formosa|La Rioja|Rio Negro)"/>
+		<pattern value="(Salta|San Juan|Santiago del Estero)"/>
+		<pattern value="(San Luis|Santa Cruz)"/>
+	</pattern>
+	<input pattern="* $Provincia *">
+		<context id="CargarProvincia">
+			<output value="Provincia" />
+			<!--Guarda el codigo de la provincia-->
+			<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if="eq($Provincia,'Capital Federal')"/>
+			<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if="eq($Provincia,'Buenos Aires Sur')"/>
+			<var name="CodigoProvincia" value="TUxBUENPUmFkZGIw" scope="user" if="eq($Provincia,'Córdoba')"/>
+			<var name="CodigoProvincia" value="TUxBUEdSQWVmNTVm" scope="user" if="eq($Provincia,'Buenos Aires Oeste')"/>
+			<var name="CodigoProvincia" value="TUxBUEdSQWU4ZDkz" scope="user" if="eq($Provincia,'Buenos Aires Norte')"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTmU5Nzk2" scope="user" if="eq($Provincia,'Santa Fe')"/>
+			<var name="CodigoProvincia" value="TUxBUENPU2ExMmFkMw" scope="user" if="eq($Provincia,'Buenos Aires Costa Atlántica')"/>
+			<var name="CodigoProvincia" value="TUxBUFpPTmFpbnRl" scope="user" if="eq($Provincia,'Buenos Aires Interior')"/>
+			<var name="CodigoProvincia" value="TUxBUFRVQ244NmM3" scope="user" if="eq($Provincia,'Tucumán')"/>
+			<var name="CodigoProvincia" value="TUxBUE1JU3MzNjIx" scope="user" if="eq($Provincia,'Misiones')"/>
+			<var name="CodigoProvincia" value="TUxBUE1FTmE5OWQ4" scope="user" if="eq($Provincia,'Mendoza')"/>
+			<var name="CodigoProvincia" value="TUxBUE5FVW4xMzMzNQ" scope="user" if="eq($Provincia,'Neuquén')"/>
+			<var name="CodigoProvincia" value="TUxBUExBWmE1OWMy" scope="user" if="eq($Provincia,'La Pampa')"/>
+			<var name="CodigoProvincia" value="TUxBUEpVSnk3YmUz" scope="user" if="eq($Provincia,'Jujuy')"/>
+			<var name="CodigoProvincia" value="TUxBUENIQW8xMTNhOA" scope="user" if="eq($Provincia,'Chaco')"/>
+			<var name="CodigoProvincia" value="TUxBUEZPUmE1OTk5" scope="user" if="eq($Provincia,'Formosa')"/>
+			<var name="CodigoProvincia" value="TUxBUExBWmEyNzY0" scope="user" if="eq($Provincia,'La Rioja')"/>
+			<var name="CodigoProvincia" value="TUxBUFLNT29iZmZm" scope="user" if="eq($Provincia,'Río Negro')"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTGFjMTJi" scope="user" if="eq($Provincia,'Salta')"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTm5lYjU4" scope="user" if="eq($Provincia,'San Juan')"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTm9lOTlk" scope="user" if="eq($Provincia,'Santiago del Estero')"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if="eq($Provincia,'San Luis')"/>
+			<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if="eq($Provincia,'Santa Cruz')"/>
+		</context>		
 	</input>
 
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
