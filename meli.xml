@@ -114,7 +114,7 @@
 	</input>
 
 	<!--Busqueda de productos especificos-->
-	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] * [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata|saber de|saber cuanto sale)*] * [(una|un|a|de|en|la|lo)*] {$Busqueda::Text [* $Precio::Number]}">			
+	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] * [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata|saber de|saber cuanto sale)*] * [(una|un|a|de|en|la|lo)*] {$Busqueda::Text $Precio::Number}">			
 		<context id="buscador" if="full($Busqueda)">
 			<!--Mensaje de error cuando no se reconoce la busqueda-->
 			<output if="empty($Busqueda)">
