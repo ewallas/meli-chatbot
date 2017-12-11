@@ -119,7 +119,8 @@
 		<context id="BuscadorConfigurado">
 			<!--Calcula un rango de precios para el que buscar productos-->
 			<var name="PrecioMinimo" value="85 * $Number:Number / 100" scope="context"/>
-			<var name="PrecioMaximo" value="115 * $Number:Number / 100" scope="context"/>			
+			<var name="PrecioMaximo" value="115 * $Number:Number / 100" scope="context"/>
+			<output value="$PrecioMaximo"/>			
 			<!-- Realiza una llamada a la api en busca de productos coincidentes -->
 			<get url="https://api.mercadolibre.com/sites/MLA/search" var="Resultados">
 				<param name="official_store" value="$CodigoTiendaOficial"/>
