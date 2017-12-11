@@ -19,7 +19,8 @@
 				<pattern value="(Salta|San Juan|Santiago del Estero)"/>
 				<pattern value="(San Luis|Santa Cruz)"/>
 			</pattern>
-			<input pattern="$Provincia">
+			<input>
+				<pattern value="* $Provincia *"/>
 				<output value="$Provincia"/>
 			</input>		
 		</context>
