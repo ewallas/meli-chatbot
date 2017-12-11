@@ -66,22 +66,21 @@
 	</input>
 
 	
-	<!--Alamcena si prefiere envios gratis o solo mercado envios-->
+	<!--Alamcena si prefiere productos nuevos o usados-->
 	<input pattern="* $SiNo *" if="empty($Configurado) or eq($Cofigurado,'No')">
-		<context id="CargarEnvio">
-			<output value="¿Envio gratis?"/>
+		<context id="CargarTiendaOficial">
+			<output value="¿Prefieres comprar en tiendas oficiales?"/>
 			<sample>
 				<item>Si</item>
 				<item>No</item>
 			</sample>
-			<!--Mensaje de fin de configuracion-->
-			<output value="Felicitaciones, ¡ya me has configurado!. Ahora solo debes buscar tu producto. Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos"/>
-			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($SiNo,'Si')"/>
-			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($SiNo,'No')"/>
-			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
-			<context/>
+			<var name="CodigoTiendaOficial" value="all" scope="user" if="eq($SiNo,'Si')"/>
+			<var name="CodigoTiendaOficial" value="" scope="user" if="eq($SiNo,'No')"/>				
+			<context id="CargarEnvio" />
 		</context>
-	</input>
+	</input>			
+
+
 							
 
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
