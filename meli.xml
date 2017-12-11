@@ -92,7 +92,7 @@
 			<output value="Felicitaciones, ¡ya me has configurado!. Ahora solo debes buscar tu producto. Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos"/>
 			<var name="CodigoEnvioGratis" value="free" scope="user" if='$Envio=="1"'/>
 			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if='$Envio=="2"'/>
-			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
+			<var name="Configurado" value="Si" scope="user"/>
 		</context>
 	</input>
 							
