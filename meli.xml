@@ -8,7 +8,7 @@
 	</input>
 
 	<!--Alamcena si prefiere productos nuevos o usados-->
-	<pattern name="Condicion" value="(nuev*:1|usad*:2)" >
+	<pattern name="Condicion" value="(nuev*:1|usad*:2)"/>
 	<input pattern="* $Condicion *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarCondicion">
 			<output value="Hola, soy tu asistente para comprar en mercadolibre, te voy a hacer unas preguntas para buscar mejor. Primera ¿Prefieres productos nuevos o usados?" if="empty($CodigoCondicion)"/>
