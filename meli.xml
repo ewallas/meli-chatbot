@@ -94,7 +94,6 @@
 			<var name="CodigoEnvioGratis" value="free" scope="user" if="eq($SiNo,'Si')"/>
 			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if="eq($SiNo,'No')"/>
 			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
-			<context/>
 		</context>
 	</input>
 							
