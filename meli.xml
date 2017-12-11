@@ -97,7 +97,7 @@
 	</input>
 							
 	<!--Si dice hola y ya esta configurado su perfil le pregunta si desea volver  configurar y ademas le recuerda como buscar-->	
-	<input pattern="*">	
+	<input pattern="* hola* *">	
 		<context id="VolverConfigurar" if='full($Configurado) and eq($Configurado,"Si")'>
 			<output>
 				<item>Recuerda que para realizar una busqueda solo debes ingresar el item con su nombre.</item>
@@ -115,13 +115,7 @@
 
 	<!--Busqueda de productos especificos-->
 	<input pattern="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] * [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata|saber de|saber cuanto sale)*] * [(una|un|a|de|en|la|lo)*] {$Busqueda::Text $Precio::Number}">			
-		<context id="buscador" if="full($Busqueda)">
-			<!--Mensaje de error cuando no se reconoce la busqueda-->
-			<output if="empty($Busqueda)">
-				<item>No entiendo lo que me quieres decir.</item>
-				<item>Puedes probar asi, me gustaria comprar un Samsung S8 a 9000</item>
-			</output>
-			
+		<context id="buscador" if='eq($Configurado,"Si")'>
 			<!--Calcula un rango de precios para el que buscar productos-->
 			<var name="PrecioMinimo" value="$Precio * 0.85" scope="context" if="full($Precio)"/>
 			<var name="PrecioMaximo" value="$Precio * 1.15" scope="context" if="full($Precio)"/>
@@ -133,8 +127,8 @@
 				<param name="shipping" value="$CodigoEnvioGratis"/>
 				<param name="has_pictures" value="yes"/>
 				<param name="accepts_mercadopago" value="yes"/>
-				<param name="limit" value="3"/>
-				<param name="price" value="$PrecioMinimo-$PrecioMaximo" if="full($Precio)"/>
+				<param name="limit" value="1"/>
+				<param name="price" value="$PrecioMinimo-$PrecioMaximo"/>
 				<param name="sort" value="price_asc"/>
 				<param name="q" value="$Busqueda"/>
 			</get>
@@ -152,12 +146,12 @@
 			<var name="LinkProducto" scope="context" value="get('permalink',$Prodcuto)" if="$CantidadResultados>0"/>
 			<var name="ImagenProducto" scope="context" value="get('thumbnail',$Prodcuto)" if="$CantidadResultados>0"/>	
 			<output if="$CantidadResultados>0">
-				<item>Te encontre este prodcuto de $CantidadResultados productos.</item>
-				<item>$TituloProducto</item>
-				<item>$PrecioProducto $MonedaProducto</item>
 				<item>
 					<![CDATA[
-						<a href="$LinkProducto"><img src="$ImagenProducto" alt="Ver más"/></a>
+						<p>Te encontre este prodcuto de $CantidadResultados productos.</p>
+						<h3>$TituloProducto</h3>
+						<h5>$PrecioProducto $MonedaProducto</h5>
+						<a href="$LinkProducto">Ver mas</a>
 					]]>		
 				</item>
 			</output>
