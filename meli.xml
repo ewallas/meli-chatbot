@@ -147,7 +147,7 @@
 			<var name="MonedaProducto" scope="context" value="get('currency_id',$Prodcuto)" if="$CantidadResultados>0"/>
 			<var name="LinkProducto" scope="context" value="get('permalink',$Prodcuto)" if="$CantidadResultados>0"/>
 			<var name="ImagenProducto" scope="context" value="get('thumbnail',$Prodcuto)" if="$CantidadResultados>0"/>	
-			<output if="$CantidadResultados>0">
+			<output>
 				<item>
 					<![CDATA[
 						<p>Te encontre este prodcuto de $CantidadResultados productos.</p>
