@@ -38,29 +38,29 @@
 	<input pattern="* $Provincia *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarProvincia">
 			<!--Guarda el codigo de la provincia-->
-			<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if='$Provincia==1'/>
-			<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if='$Provincia==2'/>
-			<var name="CodigoProvincia" value="TUxBUENPUmFkZGIw" scope="user" if='$Provincia==3'/>
-			<var name="CodigoProvincia" value="TUxBUEdSQWVmNTVm" scope="user" if='$Provincia==4'/>
-			<var name="CodigoProvincia" value="TUxBUEdSQWU4ZDkz" scope="user" if='$Provincia==5'/>
-			<var name="CodigoProvincia" value="TUxBUFNBTmU5Nzk2" scope="user" if='$Provincia==6'/>
-			<var name="CodigoProvincia" value="TUxBUENPU2ExMmFkMw" scope="user" if='$Provincia==7'/>
-			<var name="CodigoProvincia" value="TUxBUFpPTmFpbnRl" scope="user" if='$Provincia==8'/>
-			<var name="CodigoProvincia" value="TUxBUFRVQ244NmM3" scope="user" if='$Provincia==9'/>
-			<var name="CodigoProvincia" value="TUxBUE1JU3MzNjIx" scope="user" if='$Provincia==10'/>
-			<var name="CodigoProvincia" value="TUxBUE1FTmE5OWQ4" scope="user" if='$Provincia==11'/>
-			<var name="CodigoProvincia" value="TUxBUE5FVW4xMzMzNQ" scope="user" if='$Provincia==12'/>
-			<var name="CodigoProvincia" value="TUxBUExBWmE1OWMy" scope="user" if='$Provincia==13'/>
-			<var name="CodigoProvincia" value="TUxBUEpVSnk3YmUz" scope="user" if='$Provincia==14'/>
-			<var name="CodigoProvincia" value="TUxBUENIQW8xMTNhOA" scope="user" if='$Provincia==15'/>
-			<var name="CodigoProvincia" value="TUxBUEZPUmE1OTk5" scope="user" if='$Provincia==16'/>
-			<var name="CodigoProvincia" value="TUxBUExBWmEyNzY0" scope="user" if='$Provincia==17'/>
-			<var name="CodigoProvincia" value="TUxBUFLNT29iZmZm" scope="user" if='$Provincia==18'/>
-			<var name="CodigoProvincia" value="TUxBUFNBTGFjMTJi" scope="user" if='$Provincia==19'/>
-			<var name="CodigoProvincia" value="TUxBUFNBTm5lYjU4" scope="user" if='$Provincia==20'/>
-			<var name="CodigoProvincia" value="TUxBUFNBTm9lOTlk" scope="user" if='$Provincia==21'/>
-			<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if='$Provincia==22'/>
-			<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if='$Provincia==23'/>
+			<var name="CodigoProvincia" value="TUxBUENBUGw3M2E1" scope="user" if='$Provincia=="1"'/>
+			<var name="CodigoProvincia" value="TUxBUEdSQXJlMDNm" scope="user" if='$Provincia=="2"'/>
+			<var name="CodigoProvincia" value="TUxBUENPUmFkZGIw" scope="user" if='$Provincia=="3"'/>
+			<var name="CodigoProvincia" value="TUxBUEdSQWVmNTVm" scope="user" if='$Provincia=="4"'/>
+			<var name="CodigoProvincia" value="TUxBUEdSQWU4ZDkz" scope="user" if='$Provincia=="5"'/>
+			<var name="CodigoProvincia" value="TUxBUFNBTmU5Nzk2" scope="user" if='$Provincia=="6"'/>
+			<var name="CodigoProvincia" value="TUxBUENPU2ExMmFkMw" scope="user" if='$Provincia=="7"'/>
+			<var name="CodigoProvincia" value="TUxBUFpPTmFpbnRl" scope="user" if='$Provincia=="8"'/>
+			<var name="CodigoProvincia" value="TUxBUFRVQ244NmM3" scope="user" if='$Provincia=="9"'/>
+			<var name="CodigoProvincia" value="TUxBUE1JU3MzNjIx" scope="user" if='$Provincia=="10"'/>
+			<var name="CodigoProvincia" value="TUxBUE1FTmE5OWQ4" scope="user" if='$Provincia=="11"'/>
+			<var name="CodigoProvincia" value="TUxBUE5FVW4xMzMzNQ" scope="user" if='$Provincia=="12"'/>
+			<var name="CodigoProvincia" value="TUxBUExBWmE1OWMy" scope="user" if='$Provincia=="13"'/>
+			<var name="CodigoProvincia" value="TUxBUEpVSnk3YmUz" scope="user" if='$Provincia=="14"'/>
+			<var name="CodigoProvincia" value="TUxBUENIQW8xMTNhOA" scope="user" if='$Provincia=="15"'/>
+			<var name="CodigoProvincia" value="TUxBUEZPUmE1OTk5" scope="user" if='$Provincia=="16"'/>
+			<var name="CodigoProvincia" value="TUxBUExBWmEyNzY0" scope="user" if='$Provincia=="17"'/>
+			<var name="CodigoProvincia" value="TUxBUFLNT29iZmZm" scope="user" if='$Provincia=="18"'/>
+			<var name="CodigoProvincia" value="TUxBUFNBTGFjMTJi" scope="user" if='$Provincia=="19"'/>
+			<var name="CodigoProvincia" value="TUxBUFNBTm5lYjU4" scope="user" if='$Provincia=="20"'/>
+			<var name="CodigoProvincia" value="TUxBUFNBTm9lOTlk" scope="user" if='$Provincia=="21"'/>
+			<var name="CodigoProvincia" value="TUxBUFNBTnM0ZTcz" scope="user" if='$Provincia=="22"'/>
+			<var name="CodigoProvincia" value="TUxBUFNBTno3ZmY5" scope="user" if='$Provincia=="23"'/>
 			<output value="Prefieres comprar en"/>
 			<sample>
 				<item>Tienda oficial</item>
@@ -73,8 +73,8 @@
 	<!--Alamcena si prefiere productos nuevos o usados-->
 	<input pattern="* $TiendaOficial *" if="empty($Configurado) or eq($Cofigurado,'No')">
 		<context id="CargarTiendaOficial">
-			<var name="CodigoTiendaOficial" value="all" scope="user" if='$TiendaOficial==1'/>
-			<var name="CodigoTiendaOficial" value="" scope="user" if='$TiendaOficial==2'/>
+			<var name="CodigoTiendaOficial" value="all" scope="user" if='$TiendaOficial=="1"'/>
+			<var name="CodigoTiendaOficial" value="" scope="user" if='$TiendaOficial=="2"'/>
 			<output value="Prefiere envio"/>
 			<sample>
 				<item>Gratis</item>
@@ -90,8 +90,8 @@
 		<context id="CargarEnvio">
 			<!--Mensaje de fin de configuracion-->
 			<output value="Felicitaciones, ¡ya me has configurado!. Ahora solo debes buscar tu producto. Solo debes ingresar la busqueda que deseas realizar, seguido de un precio, si lo deseas y ¡Dejame el resto a mi!. Ej: Me gustaria comprar un Samsung S8 a 9000 pesos"/>
-			<var name="CodigoEnvioGratis" value="free" scope="user" if='$Envio==1'/>
-			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if='$Envio==2'/>
+			<var name="CodigoEnvioGratis" value="free" scope="user" if='$Envio=="1"'/>
+			<var name="CodigoEnvioGratis" value="mercadoenvios" scope="user" if='$Envio=="2"'/>
 			<var name="Configurado" value="Si" scope="user" if="full(CodigoEnvioGratis)"/>
 		</context>
 	</input>
