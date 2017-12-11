@@ -115,8 +115,8 @@
 
 	<pattern name="BusquedaPatron" value="* [(dese|ansi|anhel|apete|aspir|precis|requer|urg|ped|quier|gusta|necesi)*] [(compr|adquiri|obten|conseg|negoc|trafic|tene|posee|disfrut|guarda|conserva|ver||mirar|revisa|descrubri|intenta|proba|trata|saber de|saber cuanto sale)*] [(una|un|a|de|en|la|lo)*] {$Text [a|por] $Number}"/>
 	<!--Busqueda de productos especificos-->
-	<input pattern="$BusquedaPatron">			
-		<context id="BuscadorConfigurado" if='eq($Configurado,"Si")'>
+	<input pattern="$BusquedaPatron" if='eq($Configurado,"Si")'>			
+		<context id="BuscadorConfigurado">
 			<!--Calcula un rango de precios para el que buscar productos-->
 			<var name="PrecioMinimo" value="$Precio * 0.85" scope="context"/>
 			<var name="PrecioMaximo" value="$Precio * 1.15" scope="context"/>			
@@ -159,7 +159,8 @@
 			</output>
 		</context>
 	</input>
-	<input pattern="$BusquedaPatron">			
-		<context id="ComenzarConfiguracion" if='empty($Configurado) or eq($Configurado,"Si")'/>
+
+	<input pattern="$BusquedaPatron" if='empty($Configurado) or eq($Configurado,"Si")'>			
+		<context id="ComenzarConfiguracion"/>
 	</input>
 </context>
