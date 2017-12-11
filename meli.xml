@@ -9,8 +9,10 @@
 			<!--Almacena la provincia del usuario-->
 			<output value="¿Cual es tu provincia?" />
 			<!--Patron de provincias disponibles-->
-			<input pattern="* (Cordoba|Jujuy) *">
-				<output value="Okas"/>
+			<input pattern="* (cordoba|jujuy)* *">
+				<context modal="true">
+					<output value="Okas"/>
+				</context>
 			</input>		
 		</context>
 	</input>
