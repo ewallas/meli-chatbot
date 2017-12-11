@@ -166,7 +166,7 @@
 
 	<input pattern="configuraciones">			
 		<context id="MuestraConfiguraciones">
-			<output value="Tienda oficial:$CodigoTiendaOficial - Provincia:$CodigoProvincia - Condicion:$CodigoCondicion - Envio:$CodigoEnvioGratis" />
+			<output value="Tienda oficial:$CodigoTiendaOficial - Provincia:$CodigoProvincia - Condicion:$CodigoCondicion - Envio:$CodigoEnvioGratis -  Configurado:$Configurado" />
 		</context>
 	</input>
 </context>
